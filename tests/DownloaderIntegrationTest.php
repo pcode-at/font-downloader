@@ -86,7 +86,7 @@ class DownloaderIntegrationTest extends FontDownloaderTestCase
         //Checks latest version
         $this->assertTrue($downloader->isFontAvailableForDownload("Raleway"));
 
-        $this->assertTrue($downloader->isFontAvailableForDownload("Open Sans", "v15"));
+        $this->assertTrue($downloader->isFontAvailableForDownload("Open Sans", "v43"));
     }
 
     function fontsWithVersionsProvider()

@@ -1,0 +1,27 @@
+{
+  "name": "font-downloader",
+  "version": "0.0.1",
+  "description": "Downloads Google Fonts",
+  "scripts": {
+    "start": "yarn run docker:start",
+    "stop": "yarn run docker:stop",
+    "test": "yarn run docker:test",
+    "\n# DOCKER:": "",
+    "@comment docker:start": "--force-recreate is added because of network problems with other projects using docker-compose - @see https://github.com/docker/compose/issues/5745#issuecomment-590400979",
+    "docker:start": "docker-compose up --force-recreate -d --remove-orphans",
+    "docker:stop": "docker-compose stop",
+    "docker:bash": "docker-compose exec php bash",
+    "docker:test": "docker-compose exec php composer run test"
+  },
+  "devDependencies": {
+  },
+  "dependencies": {
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "browserslist": [
+    "> 0.25%",
+    "not dead"
+  ]
+}

@@ -5,3 +5,5 @@ docker
 .phpunit.xml
 tests/data/*
 composer.lock
+.phpunit.result.cache
+.env

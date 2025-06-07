@@ -151,7 +151,7 @@ class FontService implements FontServiceInterface
     {
         if (!isset($variant[$extension])) {
             throw new UnsupportedExtension(
-                "Font extension {$extension} is not available for ${$variant['fontFamily']}"
+                "Font extension {$extension} is not available for {$$variant['fontFamily']}"
             );
         }
 
