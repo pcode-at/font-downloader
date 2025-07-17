@@ -2,21 +2,21 @@
 
 namespace PCode\GoogleFontDownloader\Lib\Service;
 
-use League\Flysystem\FilesystemInterface;
+use League\Flysystem\Filesystem;
 use PCode\GoogleFontDownloader\Interfaces\Service\FileServiceInterface;
 
 class FileService implements FileServiceInterface
 {
     /**
-     * @var FilesystemInterface
+     * @var Filesystem
      */
     private $filesystem;
 
     /**
      * FileService constructor.
-     * @param FilesystemInterface $filesystem
+     * @param Filesystem $filesystem
      */
-    public function __construct(FilesystemInterface $filesystem)
+    public function __construct(Filesystem $filesystem)
     {
         $this->filesystem = $filesystem;
     }
@@ -28,7 +28,7 @@ class FileService implements FileServiceInterface
     public function write($path, $content)
     {
         if (!$this->filesystem->has($path)) {
-            $this->filesystem->put($path, $content);
+            $this->filesystem->write($path, $content);
         }
     }
 

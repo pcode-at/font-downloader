@@ -4,8 +4,8 @@ namespace PCode\GoogleFontDownloader\Lib;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Uri;
-use League\Flysystem\Adapter\Local;
 use League\Flysystem\Filesystem;
+use League\Flysystem\Local\LocalFilesystemAdapter;
 use PCode\GoogleFontDownloader\Interfaces\DownloaderInterface;
 use PCode\GoogleFontDownloader\Lib\Service\DownloadService;
 use PCode\GoogleFontDownloader\Lib\Service\FileService;
@@ -20,7 +20,7 @@ class DownloaderFactory
     public static function create($path)
     {
         $fileService = new FileService(
-            new Filesystem(new Local($path))
+            new Filesystem(new LocalFilesystemAdapter($path))
         );
         
         $fontService = new FontService($fileService, basename($path) . '/');
