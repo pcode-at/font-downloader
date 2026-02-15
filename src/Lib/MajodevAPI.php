@@ -14,11 +14,11 @@ use Psr\Http\Message\UriInterface;
  *
  * Github link: https://github.com/majodev/google-webfonts-helper
  *
- * @api https://sity-webfonts.herokuapp.com/api/fonts/<ID>/?subsets=<latin>
+ * @api https://google-webfonts-helper-production.up.railway.app/api/fonts/<ID>/?subsets=<latin>
  */
 final class MajodevAPI implements APIInterface
 {
-    const API_URL = "sity-webfonts.herokuapp.com";
+    const API_URL = "google-webfonts-helper-production.up.railway.app";
     const API_PATH = "api/fonts/";
 
     /**
