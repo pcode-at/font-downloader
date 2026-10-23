@@ -15,6 +15,10 @@ use PCode\GoogleFontDownloader\Lib\FontExtension;
 //Create using factory
 $downloader = DownloaderFactory::create(__DIR__ . '/fonts');
 
+//Optionally pass the base url of your own google-webfonts-helper instance
+//Default is MajodevAPI::DEFAULT_BASE_URL
+$downloader = DownloaderFactory::create(__DIR__ . '/fonts', 'https://fonts.example.com');
+
 //Download specific version of font
 $downloadedFont = $downloader->download("Open Sans", "v12");
 
@@ -95,12 +99,14 @@ sity.downloader.export_download:
         - '@sity.downloader.export_file'
         - '@sity.downloader.export_font'
 
+# The last argument (base url of the font API) is optional
 sity.downloader.local_majodev_api:
     class: PCode\GoogleFontDownloader\Lib\MajodevAPI
     arguments:
         - '@sity.downloader.local_font'
         - '@sity.downloader.local_download'
         - '@sity.guzzle_http.uri'
+        - '%sity.fonts.api_url%'
 
 sity.downloader.export_majodev_api:
     class: PCode\GoogleFontDownloader\Lib\MajodevAPI
@@ -108,6 +114,7 @@ sity.downloader.export_majodev_api:
         - '@sity.downloader.export_font'
         - '@sity.downloader.export_download'
         - '@sity.guzzle_http.uri'
+        - '%sity.fonts.api_url%'
 
 sity.downloader.local:
     class: PCode\GoogleFontDownloader\Lib\Downloader
@@ -135,7 +142,8 @@ public function __construct(DownloaderInterface $downloadFonts , [...])
 ```
 
 ## Available APIs
-- https://google-webfonts-helper.herokuapp.com
+- https://google-webfonts-helper-production.up.railway.app (default)
+- Any self hosted [google-webfonts-helper](https://github.com/majodev/google-webfonts-helper) instance, passed as base url
     
 ## Third-party libraries
 

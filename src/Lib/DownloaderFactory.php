@@ -15,9 +15,10 @@ class DownloaderFactory
 {
     /**
      * @param string $path
+     * @param null|string $apiUrl Base url of the font API, defaults to MajodevAPI::DEFAULT_BASE_URL
      * @return DownloaderInterface
      */
-    public static function create($path)
+    public static function create($path, $apiUrl = null)
     {
         $fileService = new FileService(
             new Filesystem(new LocalFilesystemAdapter($path))
@@ -31,7 +32,7 @@ class DownloaderFactory
             $fileService,
             $fontService,
             $downloadService,
-            new MajodevAPI($fontService, $downloadService, new Uri())
+            new MajodevAPI($fontService, $downloadService, new Uri(), $apiUrl)
         );
     }
 }
